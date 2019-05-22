@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     // This shows on file dialogs
-    KAboutData about("kmozillahelper", i18n("Mozilla Firefox"), APP_HELPER_VERSION);
+    KAboutData about("kplasmafoxhelper", i18n("plasmafox"), APP_HELPER_VERSION);
     about.setBugAddress("https://bugzilla.opensuse.org/enter_bug.cgi");
     KAboutData::setApplicationData(about);
     QApplication::setQuitOnLastWindowClosed(false);
@@ -101,7 +101,7 @@ void Helper::readCommand()
     }
 
     /* Allow multiple commands at once.
-       Firefox nests the event loop in the same way we do,
+       Plasmafox nests the event loop in the same way we do,
        so if a file dialog is open, another command may arrive which we handle
        in our nested event loop...
     // For now we only allow one command at once.
@@ -198,7 +198,7 @@ bool Helper::handleGetProxy()
     }
     QUrl proxyurl = QUrl::fromUserInput(proxy);
     if(proxyurl.isValid())
-    { // firefox wants this format
+    { // plasmafox wants this format
         outputLine("PROXY" " " + proxyurl.host() + ":" + QString::number(proxyurl.port()));
         // TODO there is also "SOCKS " type
         return true;
@@ -509,7 +509,7 @@ bool Helper::handleGetDefaultFeedReader()
 {
     if(!readArguments(0))
         return false;
-    // firefox wants the full path
+    // plasmafox wants the full path
     QString reader = QStandardPaths::findExecutable("akregator"); // TODO there is no KDE setting for this
     if(!reader.isEmpty())
     {
@@ -562,9 +562,9 @@ bool Helper::handleIsDefaultBrowser()
         return false;
     QString browser = KConfigGroup(KSharedConfig::openConfig("kdeglobals"), "General")
             .readEntry("BrowserApplication");
-    return browser == "MozillaFirefox" || browser == "MozillaFirefox.desktop"
-            || browser == "!firefox" || browser == "!/usr/bin/firefox"
-            || browser == "firefox" || browser == "firefox.desktop";
+    return browser == "plasmafox" || browser == "plasmafox.desktop"
+            || browser == "!plasmafox" || browser == "!/usr/bin/plasmafox"
+            || browser == "plasmafox" || browser == "plasmafox.desktop";
 }
 
 bool Helper::handleSetDefaultBrowser()
@@ -575,7 +575,7 @@ bool Helper::handleSetDefaultBrowser()
     if(!allArgumentsUsed())
         return false;
     KConfigGroup(KSharedConfig::openConfig("kdeglobals"), "General")
-            .writeEntry("BrowserApplication", "firefox");
+            .writeEntry("BrowserApplication", "plasmafox");
     if(alltypes)
     {
         // TODO there is no API for this and it is a bit complex
@@ -593,7 +593,7 @@ bool Helper::handleDownloadFinished()
     // TODO cheat a bit due to i18n freeze - the strings are in the .notifyrc file,
     // taken from KGet, but the notification itself needs the text too.
     // So create it from there.
-    KConfig cfg("kmozillahelper.notifyrc", KConfig::FullConfig, QStandardPaths::AppDataLocation);
+    KConfig cfg("kplasmafoxhelper.notifyrc", KConfig::FullConfig, QStandardPaths::AppDataLocation);
     QString message = KConfigGroup(&cfg, "Event/downloadfinished").readEntry("Comment");
     KNotification::event("downloadfinished", download + " : " + message);
     return true;
