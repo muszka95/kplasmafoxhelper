@@ -7,7 +7,7 @@ url="https://github.com/openSUSE/kmozillahelper"
 arch=("i686" "x86_64")
 license=('MIT')
 depends=("kio" "knotifications" "kwindowsystem" "ki18n")
-makedepends=("cmake" "extra-cmake-modules")
+makedepends=("cmake" "extra-cmake-modules" "git")
 source=(git+https://github.com/torvic9/kplasmafoxhelper.git
 	#"patch-enable_debug.patch"
 )
