@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     // Check whether we're called from Firefox or Thunderbird
-    QString appname = i18n("Mozilla Firefox");
+    QString appname = i18n("plasmafox");
     QString parent = QFile::symLinkTarget(QStringLiteral("/proc/%1/exe").arg(int(getppid())));
     if(parent.contains("thunderbird", Qt::CaseInsensitive))
         appname = i18n("Mozilla Thunderbird");
