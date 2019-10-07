@@ -1,5 +1,5 @@
 pkgname=kplasmafoxhelper
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 #epoch=1
 pkgdesc="Plasmafox KDE Integration (kmozillahelper from openSUSE)."
