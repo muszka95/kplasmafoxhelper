@@ -1,6 +1,6 @@
 [Global]
 IconName=plasmafox
-Comment=plasmafox
+Comment=Plasmafox
 
 # this is borrowed from KGet
 [Event/downloadfinished]
